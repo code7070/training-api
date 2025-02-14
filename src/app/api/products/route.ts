@@ -1060,6 +1060,7 @@ export async function GET(req: Request) {
   return Response.json({
     status: 200,
     count: resData.length,
+    total: data.length,
     data: resData,
   });
 }
