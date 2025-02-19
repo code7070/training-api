@@ -7,7 +7,17 @@ export function middleware() {
   const response = NextResponse.next();
 
   // Mengatur header CORS
-  response.headers.set("Access-Control-Allow-Origin", "*");
+  const allowedOrigins = [
+    "https://id-preview--b6938889-4b06-410f-a4f7-2006ccc6d3dd.lovable.app",
+  ];
+  const origin = response.headers.get("Origin") ?? "";
+
+  if (allowedOrigins.includes(origin)) {
+    response.headers.set("Access-Control-Allow-Origin", origin);
+  } else {
+    response.headers.set("Access-Control-Allow-Origin", "null");
+  }
+
   response.headers.set(
     "Access-Control-Allow-Methods",
     "GET, POST, PUT, DELETE, OPTIONS",
