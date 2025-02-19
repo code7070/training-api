@@ -4,7 +4,7 @@ export async function GET(req: Request) {
   const url = new URL(req.url);
   const id = url.searchParams.get("id");
   if (id) {
-    const found = mockProductUOM.filter((i) => i.id);
+    const found = mockProductUOM.filter((i) => i.id === parseInt(id, 10));
     if (found) {
       return Response.json({
         status: "success",

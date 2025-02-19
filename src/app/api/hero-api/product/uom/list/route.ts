@@ -20,10 +20,10 @@ export async function GET(req: Request) {
     data: {
       current_page: 1,
       data: paginatedData,
-      first_page_url: `http://127.0.0.1:8000/hero-api/product/uom/list?page=1`,
+      first_page_url: `${process.env.API_ENDPOINT}/hero-api/product/uom/list?page=1&per_page=${per_page}`,
       from: (page - 1) * per_page + 1,
       last_page: Math.ceil(filteredData.length / per_page),
-      last_page_url: `http://127.0.0.1:8000/hero-api/product/uom/list?page=${Math.ceil(filteredData.length / per_page)}`,
+      last_page_url: `${process.env.API_ENDPOINT}/hero-api/product/uom/list?page=${Math.ceil(filteredData.length / per_page)}&per_page=${per_page}`,
       links: [
         {
           url: null,
@@ -42,7 +42,7 @@ export async function GET(req: Request) {
         },
       ],
       next_page_url: null,
-      path: "http://127.0.0.1:8000/hero-api/product/uom/list",
+      path: `${process.env.API_ENDPOINT}/hero-api/product/uom/list`,
       per_page,
       prev_page_url: null,
       to: page,
